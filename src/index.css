@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playwrite+DE+Grund:wght@100..400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.KIT_Connector {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
