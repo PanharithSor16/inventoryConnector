@@ -47,7 +47,7 @@ const Navbar = () => {
             className="mb-0 font-semibold leading-normal"
             id="offcanvasExampleLabel"
           >
-            KIT Connector
+            RM KIT OUT OF OBS
           </h5>
           <button
             type="button"

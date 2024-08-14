@@ -14,7 +14,7 @@ const SearchItem = ({ searchTerm, itemSearch }) => {
         );
         setItemSearch(response.data);
       } catch (error) {
-        console.error('Error fetching weather data:', error);
+        console.error('Error fetching data:', error);
       }
     };
   

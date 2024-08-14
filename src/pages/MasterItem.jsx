@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { AuthContext } from "../components/AuthContext";
 import MasterItemCanvas from "../components/MasterItemCanvas";
 import apiService from "../api/apiService";
+import EditItem from "../components/EditItem";
 
 const MasterItem = () => {
   const [dataMasterItem, setDataMasterItem] = useState([]);
@@ -14,8 +15,24 @@ const MasterItem = () => {
     "Maker",
     "MOQ",
     "Location",
+    "Edit",
     "Delete",
   ];
+
+  //// handle Edit location
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [newId, setNewId] = useState();
+
+  const openDialogEdit = (id) => {
+    setNewId(id)
+    setIsOpenEdit(true);
+  };
+
+  const closeDialogEdit = () => {
+    setIsOpenEdit(false);
+  };
+
+  /// handle delete master item by id
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this MasterItem?"
@@ -53,26 +70,28 @@ const MasterItem = () => {
   return (
     <div className="h-screen flex flex-col">
       <Navbar />
+      <EditItem isOpenEdit={isOpenEdit} closeDialogEdit={closeDialogEdit} id={newId}/>
       <div className=" flex place-items-start ml-[5%]">
-          <label className="mt-2" htmlFor="search">Search MasterItem </label>
-          <input
-            onChange={(e) => setSearchMasterItem(e.target.value)}
-            type="text"
-            id="search"
-            className="ml-2 border-2 rounded-md p-2 border-red-950 sm:w-[30%] w-[70%]"
-            placeholder=""
-          />
-        </div>
+        <label className="mt-2" htmlFor="search">
+          Search MasterItem{" "}
+        </label>
+        <input
+          onChange={(e) => setSearchMasterItem(e.target.value)}
+          type="text"
+          id="search"
+          className="ml-2 border-2 rounded-md p-2 border-red-950 sm:w-[30%] w-[70%]"
+          placeholder=""
+        />
+      </div>
       <div className=" mt-2 overflow-y-auto">
-        
         <div className="">
-          <table className="w-full min-w-max table-auto text-left">
+          <table className="w-full min-w-max table-auto text-left ">
             <thead>
               <tr>
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                   className=" sticky top-0 font-medium border-2 rounded-lg bg-blue-200 p-4 border-blue-300 "
+                    className=" sticky top-0 border rounded-lg bg-blue-200 p-4 border-blue-300"
                   >
                     {head}
                   </th>
@@ -86,19 +105,21 @@ const MasterItem = () => {
                   index
                 ) => {
                   const isLast = index === dataMasterItem.length;
-                  const classes = isLast
-                    ? "p-4"
-                    : "p-4 border-2 border-blue-200";
+                  const classes = isLast ? "" : "p-2 border-2 border-blue-200";
                   return (
                     <tr key={id}>
                       <td className={classes}>{itemCode}</td>
-                      <td className={`${classes} bg-blue-gray-50/50`}>
+                      <td className={`p-4 border-2 border-blue-200 w-auto bg-blue-gray-50/50 `}>
                         {itemName}
                       </td>
                       <td className={classes}>{type}</td>
                       <td className={classes}>{maker}</td>
                       <td className={classes}>{moq}</td>
                       <td className={classes}>{location}</td>
+                      <td className={`text-green-600 ${classes} cursor-pointer`} onClick={() => openDialogEdit(id)} >Edit
+                     
+                      </td>
+                      
                       <td
                         className={`text-red-600 p-4 border-2 border-blue-200 cursor-pointer`}
                         onClick={() => handleDelete(id)}

@@ -79,8 +79,8 @@ const TransferCanvas = () => {
         itemCode: item.itemCode || "",
         itemName: item.itemName || "",
         location: item.location || "",
-        receivedQty: item.receivedQty || "",
-        issuedQty: item.issuedQty || "",
+        receivedQty: item.receivedQty || "0",
+        issuedQty: item.issuedQty || "0",
       });
       setErrors({});
       setResultSearch([]);
@@ -198,9 +198,9 @@ const TransferCanvas = () => {
                 </label>
                 <input
                   id={field}
-                  type="number"
+                  type="text"
                   required
-                  className="ml-2 p-1 border-2 rounded-lg border-red-950"
+                  className="ml-2 p-1 border-2 rounded-lg border-red-950 text-gray-400"
                   value={formData[field]}
                   onChange={handleChange}
                   placeholder={errors[field]}

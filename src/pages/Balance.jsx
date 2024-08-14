@@ -42,7 +42,7 @@ const Balance = () => {
           <DownloadTableExcel
             filename="Balance.xlsx"
             sheet="Balance"
-            fileExtension=".xlsx"
+            
             currentTableRef={tableRef.current}
           >
             <button className="bg-blue-200 p-2 rounded-md">Export Excel</button>
@@ -81,7 +81,7 @@ const Balance = () => {
                   return (
                     <tr key={itemCode + maker}>
                       <td className={classes}>{itemCode}</td>
-                      <td className={`${classes} bg-blue-gray-50/50`}>
+                      <td className={` p-4 border-2 border-blue-200 w-auto bg-blue-gray-50/50`}>
                         {itemName}
                       </td>
                       <td className={classes}>{type}</td>

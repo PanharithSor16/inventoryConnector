@@ -104,7 +104,7 @@ const SearchTransition = () => {
                   return (
                     <tr key={id}>
                       <td className={classes}>{itemCode}</td>
-                      <td className={`${classes} bg-blue-gray-50/50`}>
+                      <td className={`${classes}`}>
                         {itemName}
                       </td>
                       <td className={classes}>{receivedQty}</td>
