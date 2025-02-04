@@ -10,6 +10,8 @@ const SearchTransition = () => {
     "Name",
     "Receive QTY",
     "Issue QTY",
+    "Type",
+    "Remark",
     "Register Date",
     "Register By",
     "Location",
@@ -93,6 +95,8 @@ const SearchTransition = () => {
                     registerBy,
                     registerDate,
                     location,
+                    remark,
+                    transferType
                   },
                   index
                 ) => {
@@ -109,6 +113,8 @@ const SearchTransition = () => {
                       </td>
                       <td className={classes}>{receivedQty}</td>
                       <td className={classes}>{issuedQty}</td>
+                      <td className={classes}>{transferType}</td>
+                      <td className={`${classes} text-pretty max-w-48 `}>{remark}</td>
                       <td className={classes}>{registerDate}</td>
                       <td className={classes}>{registerBy}</td>
                       <td className={classes}>{location}</td>

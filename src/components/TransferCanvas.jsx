@@ -10,6 +10,8 @@ const TransferCanvas = () => {
     location: "",
     receivedQty: "",
     issuedQty: "",
+    remark: "",
+    transferType: "",
   });
   const [errors, setErrors] = useState({});
   const [search, setSearch] = useState("");
@@ -26,6 +28,8 @@ const TransferCanvas = () => {
     if (!formData.itemName) newErrors.itemName = "Item name is required";
     if (!formData.receivedQty) newErrors.receivedQty = "Receive stock is required";
     if (!formData.issuedQty) newErrors.issuedQty = "Issue stock is required";
+    if (!formData.remark) newErrors.remark = "Remark is Required";
+    if (!formData.transferType) newErrors.transferType = "Select One";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -44,6 +48,8 @@ const TransferCanvas = () => {
         location: "",
         receivedQty: "",
         issuedQty: "",
+        remark: "",
+        transferType: "",
       });
       setErrors({});
     } catch (error) {
@@ -108,8 +114,9 @@ const TransferCanvas = () => {
       >
         Make Transfer
       </button>
+
       <div
-        className="invisible fixed bottom-0 left-0 right-0 top-0 z-[1045] flex h-2/5 max-h-full max-w-full -translate-y-full flex-col border-none bg-white bg-clip-padding text-neutral-700 shadow-sm outline-none transition duration-300 ease-in-out data-[twe-offcanvas-show]:transform-none dark:bg-body-dark dark:text-white"
+        className="invisible fixed bottom-0 left-0 right-0 top-0 z-[1045] flex h-auto max-h-full max-w-full -translate-y-full flex-col border-none bg-white bg-clip-padding text-neutral-700 shadow-sm outline-none transition duration-300 ease-in-out data-[twe-offcanvas-show]:transform-none dark:bg-body-dark dark:text-white"
         tabIndex="-1"
         id="offcanvasTop"
         aria-labelledby="offcanvasTopLabel"
@@ -185,6 +192,21 @@ const TransferCanvas = () => {
                 />
               </div>
             ))}
+            <div className="flex place-content-between m-2">
+              <label l className="mt-1" htmlFor="transferType">
+                transferType
+              </label>
+              <select className="ml-2 min-w-48 p-1 border-2 rounded-lg border-red-950"
+                id="transferType"
+                value={formData["transferType"]}
+                placeholder={errors["transferType"]}
+                onChange={handleChange} >
+                <option value=""></option>
+                <option value="Normal">Normal</option>
+                <option value="Depose">Depose</option>
+                <option value="Adjust">AdJust</option>
+              </select>
+            </div>
           </div>
           <div className="flex flex-col">
             {["location", "receivedQty", "issuedQty"].map((field) => (
@@ -193,8 +215,8 @@ const TransferCanvas = () => {
                   {field === "location"
                     ? "Location"
                     : field === "receivedQty"
-                    ? "Receive stock"
-                    : "Issue stock"}:
+                      ? "Receive stock"
+                      : "Issue stock"}:
                 </label>
                 <input
                   id={field}
@@ -207,6 +229,18 @@ const TransferCanvas = () => {
                 />
               </div>
             ))}
+            <div className="flex place-content-between m-2">
+              <label htmlFor="remark">Remark</label>
+              <textarea
+                id="remark"
+                value={formData["remark"]}
+                onChange={handleChange}
+                placeholder={errors["remark"]}
+                className="ml-2 p-1 border-2 rounded-lg border-red-950 text-gray-400"
+              >
+
+              </textarea>
+            </div>
           </div>
         </div>
         <div className="text-center">

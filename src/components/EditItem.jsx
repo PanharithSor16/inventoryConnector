@@ -6,7 +6,7 @@ const EditItem = ({ isOpenEdit, closeDialogEdit, id }) => {
   const { authState } = useContext(AuthContext);
   const [getItemCode, setGetItemCode] = useState();
   const [getItemName, setGetItemName] = useState();
-  const [getIemLocation, setLocation] = useState();
+  const [getItemLocation, setLocation] = useState();
   const [newLocation, setNewLocation] = useState("");
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const EditItem = ({ isOpenEdit, closeDialogEdit, id }) => {
               <div >
                 old Location:{" "}
                 <span className=" text-green-400 font-bold">
-                  {getIemLocation}
+                  {getItemLocation}
                 </span>
               </div>
               <input

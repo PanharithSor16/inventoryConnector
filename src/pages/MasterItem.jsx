@@ -22,12 +22,10 @@ const MasterItem = () => {
   //// handle Edit location
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [newId, setNewId] = useState();
-
   const openDialogEdit = (id) => {
     setNewId(id)
     setIsOpenEdit(true);
   };
-
   const closeDialogEdit = () => {
     setIsOpenEdit(false);
   };
@@ -91,7 +89,7 @@ const MasterItem = () => {
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className=" sticky top-0 border rounded-lg bg-blue-200 p-4 border-blue-300"
+                    className="sticky top-0 border rounded-lg bg-blue-200 p-4 border-blue-300"
                   >
                     {head}
                   </th>

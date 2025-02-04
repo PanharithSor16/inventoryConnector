@@ -15,6 +15,8 @@ const Transfer = () => {
     "ItemName",
     "ReceiveQty",
     "IssuedQty",
+    "Type",
+    "remark",
     "Location",
     "RegisterBy",
     "RegisterDate",
@@ -108,6 +110,8 @@ const Transfer = () => {
                     registerDate,
                     registerBy,
                     receivedQty,
+                    transferType,
+                    remark
                   },
                   index
                 ) => {
@@ -124,6 +128,8 @@ const Transfer = () => {
 
                       <td className={classes}>{receivedQty}</td>
                       <td className={classes}>{issuedQty}</td>
+                      <td className={classes}>{transferType}</td>
+                      <td className={`${classes} text-wrap max-w-48 `}>{remark}</td>
                       <td className={classes}>{location}</td>
                       <td className={classes}>{registerBy}</td>
                       <td className={classes}>{registerDate}</td>
